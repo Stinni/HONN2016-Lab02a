@@ -10,7 +10,6 @@ import java.util.Date;
  * @version 1, 03.09.16
  */
 public class Person {
-
     protected String name;
     protected Date dateOfBirth;
 
@@ -37,7 +36,8 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String toString() {
+    public String toString ()
+    {
         return "Person: " + getName();
     }
 }

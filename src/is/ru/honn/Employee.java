@@ -9,33 +9,25 @@ import java.util.Date;
  * @author Kristinn Heiðar Freysteinsson
  * @version 1, 03.09.16
  */
-public class Employee {
-    protected Date dateOfBirth;
+public class Employee extends Person {
+    protected Date dateOfHire;
 
-    public Person(){}
-
-    public Person(String name, Date dateOfBirth) {
+    public Person(String name, Date dateOfBirth, Date dateOfHire) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
+        this.dateOfHire = dateOfHire;
     }
 
-    public String getName() {
-        return name;
+    public Date getDateOfHire() {
+        return dateOfHire;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDateOfHire(Date dateOfHire) {
+        this.dateOfHire = dateOfHire;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String toString() {
-        return "Person: " + getName();
+    public String toString()
+    {
+        return "Employee: " + getName() + ", hired " + getDateOfHire();
     }
 }
