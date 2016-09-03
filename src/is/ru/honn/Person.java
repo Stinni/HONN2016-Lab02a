@@ -1,6 +1,7 @@
 package is.ru.honn;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 
 /**
  * Klasinn Person (Person.java)
@@ -9,13 +10,14 @@ import java.util.Date;
  * @author Kristinn Heiðar Freysteinsson
  * @version 1, 03.09.16
  */
-public class Person {
+abstract public class Person implements Comparable {
+
     protected String name;
-    protected Date dateOfBirth;
+    protected GregorianCalendar dateOfBirth;
 
     public Person(){}
 
-    public Person(String name, Date dateOfBirth) {
+    public Person(String name, GregorianCalendar dateOfBirth) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
     }
@@ -28,13 +30,22 @@ public class Person {
         this.name = name;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public String getDateOfBirth() {
+        SimpleDateFormat fmt = new SimpleDateFormat("dd.MM.YYYY");
+        fmt.setCalendar(dateOfBirth);
+        return fmt.format(dateOfBirth.getTime());
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(GregorianCalendar dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+    public int compareTo(Object o) {
+        Person p = (Person)o;
+        return this.name.compareTo(p.getName());
+    }
+
+    public abstract double getSalary();
 
     public String toString ()
     {

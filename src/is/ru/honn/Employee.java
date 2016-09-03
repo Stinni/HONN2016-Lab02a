@@ -1,29 +1,45 @@
 package is.ru.honn;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 
 /**
- * Klasinn Person (Person.java)
+ * Klasinn Employee (Employee.java)
  * TODO: Add description
  *
  * @author Kristinn Heiðar Freysteinsson
  * @version 1, 03.09.16
  */
 public class Employee extends Person {
-    protected Date dateOfHire;
 
-    public Person(String name, Date dateOfBirth, Date dateOfHire) {
+    protected GregorianCalendar dateOfHire;
+    protected double salary;
+
+    public Employee() {}
+
+    public Employee(String name, GregorianCalendar dateOfBirth, GregorianCalendar dateOfHire) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.dateOfHire = dateOfHire;
     }
 
-    public Date getDateOfHire() {
-        return dateOfHire;
+    public String getDateOfHire() {
+        SimpleDateFormat fmt = new SimpleDateFormat("dd.MM.YYYY");
+        fmt.setCalendar(dateOfHire);
+        return fmt.format(dateOfHire.getTime());
     }
 
-    public void setDateOfHire(Date dateOfHire) {
+    public void setDateOfHire(GregorianCalendar dateOfHire) {
         this.dateOfHire = dateOfHire;
+    }
+
+    @Override
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     public String toString()
