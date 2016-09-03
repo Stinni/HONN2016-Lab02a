@@ -2,6 +2,7 @@ package is.ru.honn;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -36,9 +37,11 @@ public class Test1 {
 
         Collections.sort(staff);
 
-        for (Object aStaff : staff) {
-            Person p = (Person) aStaff;
-            System.out.println(p.getName() + ": " + p.getSalary());
+        for (Object aStaff : staff)
+        {
+            Person p = (Person)aStaff;
+            Worktime w = (Worktime)aStaff;
+            System.out.println(p.getName() + ": " + w.getWorkDays(new Date()));
         }
     }
 }

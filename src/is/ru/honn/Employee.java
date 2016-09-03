@@ -1,6 +1,7 @@
 package is.ru.honn;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -10,7 +11,7 @@ import java.util.GregorianCalendar;
  * @author Kristinn Heiðar Freysteinsson
  * @version 1, 03.09.16
  */
-public class Employee extends Person {
+public class Employee extends Person implements Worktime {
 
     protected GregorianCalendar dateOfHire;
     protected double salary;
@@ -40,6 +41,12 @@ public class Employee extends Person {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public int getWorkDays(Date now)
+    {
+        Date tmp = dateOfHire.getTime();
+        return (int)((now.getTime() - tmp.getTime()) / 86400000);
     }
 
     public String toString()
